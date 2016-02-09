@@ -1,6 +1,5 @@
 # DCAvailability
 
-[![CI Status](http://img.shields.io/travis/David Clark/DCAvailability.svg?style=flat)](https://travis-ci.org/David Clark/DCAvailability)
 [![Version](https://img.shields.io/cocoapods/v/DCAvailability.svg?style=flat)](http://cocoapods.org/pods/DCAvailability)
 [![License](https://img.shields.io/cocoapods/l/DCAvailability.svg?style=flat)](http://cocoapods.org/pods/DCAvailability)
 [![Platform](https://img.shields.io/cocoapods/p/DCAvailability.svg?style=flat)](http://cocoapods.org/pods/DCAvailability)
