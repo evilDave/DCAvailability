@@ -53,7 +53,7 @@
 #define DC_AVAILABILITY_9_2(_ios) CF_AVAILABLE_IOS(_ios)
 
 // Macro to force the deprecated message, do the weak import, when needed
-#define DC_DEPRECATED_NEWAPI(_ios) __attribute__((deprecated("Available starting API " #_ios ", which is newer than the Deployment Target"))) __attribute__((weak_import))
+#define DC_DEPRECATED_NEWAPI(_ios) __attribute__((deprecated("Available starting API " #_ios ", which is newer than the Deployment Target"), weak_import))
 
 // Redefine the old availability macros (used when "availability" is not used) and the default macros above to force
 // the deprecation when the version falls into the weak link range also redefine the other macros
