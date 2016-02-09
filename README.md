@@ -4,11 +4,13 @@
 [![License](https://img.shields.io/cocoapods/l/DCAvailability.svg?style=flat)](http://cocoapods.org/pods/DCAvailability)
 [![Platform](https://img.shields.io/cocoapods/p/DCAvailability.svg?style=flat)](http://cocoapods.org/pods/DCAvailability)
 
-**NOTE: Does not work with modules enabled** - need to figure out how Availability.h gets included and how to redefine the macros. I thought that adding a prefix header and importing DCAvailability.h would work but the macros don't seem to get modified. I don't know enough about how modules work to fix this at the moment.
+**NOTE: Does not work with modules enabled(*)** - need to figure out how Availability.h gets included and how to redefine the macros. I thought that adding a prefix header and importing DCAvailability.h would work but the macros don't seem to get modified. I don't know enough about how modules work to fix this at the moment.
 
 Modifies the availability macros so that usage of API introduced after the Development Target causes a deprecation warning.
 
 Any such libraries will be weak linked (which is the usual behaviour of the old macros and the availability attributes).
+
+\* *According to http://clang.llvm.org/docs/Modules.html it looks like there are some smarts to prevent define collisions and to ensure that undefs remain active no matter what the order of include. Sounds like that is what is causing it not to work. But it also sounds like this scenario (one header redefining macros in a different header) should be supported and it's just a matter of figuring out how to make it work - probably will need to create a module.*
 
 ## Installation
 
