@@ -1,12 +1,12 @@
 # DCAvailability
 
-[![Version](https://img.shields.io/cocoapods/v/DCAvailability.svg?style=flat)](http://cocoapods.org/pods/DCAvailability)
-[![License](https://img.shields.io/cocoapods/l/DCAvailability.svg?style=flat)](http://cocoapods.org/pods/DCAvailability)
-[![Platform](https://img.shields.io/cocoapods/p/DCAvailability.svg?style=flat)](http://cocoapods.org/pods/DCAvailability)
-
 Modifies the availability macros so that usage of API introduced after the Development Target causes a deprecation warning.
 
 Any such libraries will be weak linked (which is the usual behaviour of the old macros and the availability attributes).
+
+[![Version](https://img.shields.io/cocoapods/v/DCAvailability.svg?style=flat)](http://cocoapods.org/pods/DCAvailability)
+[![License](https://img.shields.io/cocoapods/l/DCAvailability.svg?style=flat)](http://cocoapods.org/pods/DCAvailability)
+[![Platform](https://img.shields.io/cocoapods/p/DCAvailability.svg?style=flat)](http://cocoapods.org/pods/DCAvailability)
 
 ## Installation
 
