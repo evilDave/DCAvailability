@@ -4,13 +4,9 @@
 [![License](https://img.shields.io/cocoapods/l/DCAvailability.svg?style=flat)](http://cocoapods.org/pods/DCAvailability)
 [![Platform](https://img.shields.io/cocoapods/p/DCAvailability.svg?style=flat)](http://cocoapods.org/pods/DCAvailability)
 
-**NOTE: Does not work with modules enabled(*)** - need to figure out how Availability.h gets included and how to redefine the macros. I thought that adding a prefix header and importing DCAvailability.h would work but the macros don't seem to get modified. I don't know enough about how modules work to fix this at the moment.
-
 Modifies the availability macros so that usage of API introduced after the Development Target causes a deprecation warning.
 
 Any such libraries will be weak linked (which is the usual behaviour of the old macros and the availability attributes).
-
-\* *According to http://clang.llvm.org/docs/Modules.html it looks like there are some smarts to prevent define collisions and to ensure that undefs remain active no matter what the order of include. Sounds like that is what is causing it not to work. But it also sounds like this scenario (one header redefining macros in a different header) should be supported and it's just a matter of figuring out how to make it work - probably will need to create a module.*
 
 ## Installation
 
@@ -25,6 +21,8 @@ Change your precompiled header file to import DCAvailability.h instead of Availa
 
     #import <DCAvailability.h>
 
+**NOTE: Does not work as simply with modules enabled (see below)**
+
 *If you handle such calls at runtime, e.g. using respondsToSelector, you can ignore the warnings like this:*
 
     #pragma clang diagnostic push
@@ -33,6 +31,28 @@ Change your precompiled header file to import DCAvailability.h instead of Availa
             [something doSomething];
         }
     #pragma clang diagnostic pop
+
+## Modules
+
+When modules are enabled, frameworks are added automatically when imported, and the code is only compiled one time no matter how many times you import it. This means that there is no way to redefine the macros that we need. Well, you can, but they are only redefined for use in your code, the module has already been compiled before you redefine the macro. This is actually specifically pointed out as a benefit - modules are not susceptible to local macro redefinition.
+
+You have to turn off modules for DCAvailability to work.
+
+***All is not lost however***
+
+It's still relatively simple to work around it. It means that the checking is not going to be done automatically every time you build, but it will still give you a scheme to select to do check manually from time to time - it's better than nothing.
+
+**How to use DCAvailability with modules enabled**
+
+* Create a configuration called Availability
+* Create a target called Availability
+* Create a scheme called Availability that builds the Availability target using the Availability configuration
+* Create a group called Availability
+* Add a prefix header (put it in the group to keep things tidy)
+* Edit the configuration to disable modules, use the prefix header, precompile the prefix header
+* Add any frameworks that you use to the target (put them in the group to be tidy)
+
+Now, when you want to check that you have not used anything that might not be available at runtime, build the Availability scheme.
 
 ## Author
 
