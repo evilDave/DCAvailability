@@ -44,13 +44,14 @@ It's still relatively simple to work around it. It means that the checking is no
 
 **How to use DCAvailability with modules enabled**
 
-* Create a configuration called Availability
-* Create a target called Availability
-* Create a scheme called Availability that builds the Availability target using the Availability configuration
+* Duplicate your Debug configuration, call it Availability
+* Duplicate your app target, call it Availability, use the same Info.plist file (multiple targets? duplicate them all)
+* Create a scheme called Availability (one may have been autocreated when you added the new target) which builds the Availability target(s) using the Availability configuration
 * Create a group called Availability
 * Add a prefix header (put it in the group to keep things tidy)
 * Edit the configuration to disable modules, use the prefix header, precompile the prefix header
-* Add any frameworks that you use to the target (put them in the group to be tidy)
+* Add any frameworks that you use to the Availability target(s) (put them in the group to be tidy)
+* If you are using cocoapods, good luck. Adding configurations sometimes seems to screw things up.
 
 Now, when you want to check that you have not used anything that might not be available at runtime, build the Availability scheme.
 
