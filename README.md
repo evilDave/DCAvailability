@@ -51,7 +51,6 @@ It's still relatively simple to work around it. It means that the checking is no
 * Add a prefix header (put it in the group to keep things tidy)
 * Edit the configuration to disable modules, use the prefix header, precompile the prefix header
 * Add any frameworks that you use to the Availability target(s) (put them in the group to be tidy)
-* If you are using cocoapods, good luck. Adding configurations sometimes seems to screw things up.
 
 Now, when you want to check that you have not used anything that might not be available at runtime, build the Availability scheme.
 
