@@ -57,7 +57,7 @@ Now, when you want to check that you have not used anything that might not be av
 
 **Issues with this approach**
 
-You cannot use `@import`. I think this should not be a concern as `#import`s are automatically converted into `@import` when you de enable modules.
+You cannot use `@import`. I think this should not be a concern as any `#import` statements are automatically converted into `@import` when you do enable modules (all your other configurations).
 
 There can be issues with cocoapods when you have a custom config. E.g. `CocoaPods did not set the base configuration of your project because your project already has a custom config set.` Ugh. It seems that if you add the custom config and _then_ add other pods with pod install, you might get this message, but it all still works. Trying to add a custom configuration to a project that already had working pods installed caused all manner of problems, preventing it from linking properly. There is likely something that I am missing but I don't understand that part of cocopoads well enough to know what it is trying to do.
 
