@@ -49,7 +49,7 @@ It's still relatively simple to work around it. It means that the checking is no
 * Create a scheme called Availability (one may have been autocreated when you added the new target) which builds the Availability target(s) using the Availability configuration
 * Create a group called Availability
 * Add a prefix header (put it in the group to keep things tidy)
-* Add #import <DCAvailability.h> to the pch file
+* Add `#import <DCAvailability.h>` to the pch file
 * Edit the configuration to disable modules, use the prefix header, precompile the prefix header
 * Add any frameworks that you use to the Availability target(s) (put them in the group to be tidy)
 
