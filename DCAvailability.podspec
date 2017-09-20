@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "DCAvailability"
-  s.version          = "0.2.3"
+  s.version          = "0.2.4"
   s.summary          = "Get deprecation warnings when API newer than Development Target is used."
 
   s.homepage         = "https://github.com/evilDave/DCAvailability"

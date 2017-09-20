@@ -56,6 +56,7 @@
 #define DC_AVAILABILITY_10_1(_ios) CF_AVAILABLE_IOS(_ios)
 #define DC_AVAILABILITY_10_2(_ios) CF_AVAILABLE_IOS(_ios)
 #define DC_AVAILABILITY_10_3(_ios) CF_AVAILABLE_IOS(_ios)
+#define DC_AVAILABILITY_11_0(_ios) CF_AVAILABLE_IOS(_ios)
 
 // Macro to force the deprecated message, do the weak import, when needed
 #define DC_DEPRECATED_NEWAPI(_ios) __attribute__((deprecated("Available starting API " #_ios ", which is newer than the Deployment Target"), weak_import))
@@ -276,6 +277,13 @@
 #define __AVAILABILITY_INTERNAL__IPHONE_10_3 DC_DEPRECATED_NEWAPI(10_3)
 #undef DC_AVAILABILITY_10_3
 #define DC_AVAILABILITY_10_3(_ios) DC_DEPRECATED_NEWAPI(_ios)
+#endif
+
+#if __IPHONE_11_0 > __IPHONE_OS_VERSION_MIN_REQUIRED & __IPHONE_11_0 <= __IPHONE_OS_VERSION_MAX_ALLOWED
+#undef  __AVAILABILITY_INTERNAL__IPHONE_11_0
+#define __AVAILABILITY_INTERNAL__IPHONE_11_0 DC_DEPRECATED_NEWAPI(11_0)
+#undef DC_AVAILABILITY_11_0
+#define DC_AVAILABILITY_11_0(_ios) DC_DEPRECATED_NEWAPI(_ios)
 #endif
 
 // Reroute usages of the NS_AVAILABLE_IOS macro to our own version specific ones (possibly the default, possibly redefined)

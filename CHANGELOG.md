@@ -13,3 +13,7 @@ Updated for iOS 10.1
 ## 0.2.3
 
 Updated for iOS 10.2, and 10.3
+
+## 0.2.4
+
+Updated for iOS 11.0
